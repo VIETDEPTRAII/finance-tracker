@@ -1,0 +1,20 @@
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<h1>My portfolio</h1>
+
+<div class="mt-5">
+  <h3>Search Stocks</h3>
+  <%= form_tag search_stock_path, remote: true, method: :get do %>
+    <div class="form-group row">
+      <div class="col-sm-9 no-right-padding">
+        <%= text_field_tag :stock, nil, placeholder: 'Type stock ticker symbol', autofocus: true, class: "form-control form-control-lg" %>
+      </div>
+      <div class="col-sm-3 no-left-padding">
+        <%= button_tag type: :submit, class: "btn btn-success" do %>
+          <%= fa_icon 'search 2x' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div id="search-result">
+  </div>
+</div>

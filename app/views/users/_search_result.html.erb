@@ -1,0 +1,11 @@
+<div class="w-50">
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @stock %>
+  <div class="card card-header d-inline">
+    <span><strong>Symbol: <%= @stock.ticker %></strong></span>
+    <span><strong>Name: <%= @stock.name %></strong></span>
+    <span><strong>Price: <%= @stock.last_price %></strong></span>
+  </div>
+<% end %>
