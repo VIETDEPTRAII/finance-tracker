@@ -11,11 +11,12 @@
 #
 class Stock < ApplicationRecord
   def self.new_lookup(ticker_symbol)
-    client = IEX::Api::Client.new(
-      publishable_token: ENV['IEX_PUBLISHABLE'],
-      secret_token: ENV['IEX_SECRET_TOKEN'],
-      endpoint: ENV['IEX_ENDPOINT']
-    )
-    client.price(ticker_symbol)
+    client = IEX::Api::Client.new(publishable_token: ENV['IEX_PUBLISHABLE'], secret_token: ENV['IEX_SECRET_TOKEN'],
+                                  endpoint: ENV['IEX_ENDPOINT'])
+    begin
+      new(ticker: ticker_symbol, name: client.company(ticker_symbol)&.company_name, last_price: client.price(ticker_symbol))
+    rescue
+      nil
+    end
   end
 end
