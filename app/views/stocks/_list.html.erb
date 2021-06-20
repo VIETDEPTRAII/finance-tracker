@@ -1,0 +1,26 @@
+<% if @tracked_stocks.present? %>
+  <div class="row">
+    <div class="col-9">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tracked_stocks.each do |tracked_stock| %>
+            <tr>
+              <td><%= tracked_stock.ticker %></td>
+              <td><%= tracked_stock.name %></td>
+              <td><%= tracked_stock.last_price %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
