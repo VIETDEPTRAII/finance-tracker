@@ -10,6 +10,11 @@
 #  updated_at :datetime         not null
 #
 class Stock < ApplicationRecord
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+
+  validates :ticker, :name, presence: true
+
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(publishable_token: ENV['IEX_PUBLISHABLE'], secret_token: ENV['IEX_SECRET_TOKEN'],
                                   endpoint: ENV['IEX_ENDPOINT'])
