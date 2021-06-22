@@ -1,0 +1,21 @@
+<div class="w-50">
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @friends.present? %>
+  <% @friends.each do |f| %>
+    <div class="card card-header d-block mb-3 w-75">
+      <span><strong>Email: <%= f.email %></strong></span>,
+      <span><strong>Full name: <%= f.decorate.full_name %></strong></span>
+      <% if current_user.can_follow_friend?(f) %>
+        <span class="ml-2">
+          <%= link_to 'Start following', friendships_path(friend_id: f.id), class: "btn btn-success", method: :post %>
+        </span>
+      <% else %>
+        <span class="badge badge-secondary">
+          Followed
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

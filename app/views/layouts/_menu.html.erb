@@ -10,6 +10,9 @@
         <li class="nav-item <%= 'active' if request.path == root_path %>">
           <%= link_to 'My portfolio', root_path, class: "nav-link" %>
         </li>
+        <li class="nav-item <%= 'active' if request.path == my_friends_path %>">
+          <%= link_to 'My friends', my_friends_path, class: "nav-link" %>
+        </li>
       </ul>
 
       <% if user_signed_in? %>
