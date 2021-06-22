@@ -26,6 +26,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'iex-ruby-client'
 gem 'font-awesome-rails'
+gem "draper"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
