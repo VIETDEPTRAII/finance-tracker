@@ -25,6 +25,12 @@ class User < ApplicationRecord
     under_stock_limit? && !stock_already_tracked?(ticker)
   end
 
+  def can_follow_friend?(friend)
+    return if friend.blank?
+
+    !friends.where(id: friend.id).exists?
+  end
+
   def under_stock_limit?
     stocks.count < 10
   end
