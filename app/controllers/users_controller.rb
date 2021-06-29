@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       if params[:email_or_name].blank?
         flash.now[:alert] = 'Please type a email or name of your friends!'
       else
-        @friends = User.where("email LIKE :email_or_name OR first_name LIKE :email_or_name OR last_name LIKE :email_or_name", {email_or_name: "%#{params[:email_or_name]}%"})
+        @friends = Users::SearchUsersQuery.call(params[:email_or_name], current_user.id)
         flash.now[:alert] = 'Sorry! No results found' if @friends.blank?
       end
       format.js { render partial: 'search_friends_result' }
