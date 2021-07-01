@@ -6,17 +6,17 @@
   <% @friends.each do |f| %>
     <div class="card card-header d-block mb-3 w-75">
       <span><strong>Email: <%= f.email %></strong></span>,
-      <span><strong>Full name: <%= f.decorate.full_name %></strong></span>,
-      <span><strong>Actions: <%= link_to 'View profile', "#", class: "btn btn-success" %></strong></span>
+      <span class="mr-2"><strong>Full name: <%= f.decorate.full_name %></strong></span>
       <% if current_user.can_follow_friend?(f) %>
         <span class="ml-2">
-          <%= link_to 'Start following', friendships_path(friend_id: f.id), class: "btn btn-success", method: :post %>
+          <%= link_to 'Start following', friendships_path(friend_id: f.id), class: "btn btn-success btn-sm", method: :post %>
         </span>
       <% else %>
-        <span class="badge badge-secondary">
+        <span class="badge badge-success">
           Followed
         </span>
       <% end %>
+      <span class="ml-1"><%= link_to 'View profile', user_path(f.id), class: "btn btn-info btn-sm" %></span>
     </div>
   <% end %>
 <% end %>
