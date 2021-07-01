@@ -1,0 +1,21 @@
+<h2>User Details</h2>
+
+<div class="card card-header d-block mb-3 w-75">
+  <span><strong>Email: <%= @user.email %></strong></span>,
+  <span><strong>Full name: <%= @user.full_name %></strong></span>
+  <% if current_user.can_follow_friend?(@user) %>
+    <span class="ml-2">
+      <%= link_to 'Start following', friendships_path(friend_id: @user.id), class: "btn btn-success btn-sm", method: :post %>
+    </span>
+  <% else %>
+    <span class="badge badge-success">
+      Followed
+    </span>
+  <% end %>
+</div>
+
+<%= render 'stocks/list' %>
+
+<% if @tracked_stocks.blank? %>
+  <p>This user is not tracking any stocks</p>
+<% end %>

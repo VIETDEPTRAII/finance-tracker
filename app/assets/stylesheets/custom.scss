@@ -12,3 +12,10 @@
   display: inline-block;
   margin-bottom: 1rem;
 }
+
+// Width
+@for $value from 1 through 100 {
+  .w-#{$value} {
+    width: 1% * $value !important;
+  }
+}
