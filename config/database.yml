@@ -50,6 +50,8 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: utf8
   database: finance_tracker_production
   username: finance_tracker
   password: <%= ENV['FINANCE_TRACKER_DATABASE_PASSWORD'] %>
